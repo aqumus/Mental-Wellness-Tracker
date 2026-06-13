@@ -89,17 +89,54 @@ Deferred beyond the hackathon.
 
 ## Traceability
 
-Updated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| (pending roadmap) | — | Pending |
+| AUTH-01 | Phase 1 | Pending |
+| AUTH-02 | Phase 1 | Pending |
+| AUTH-03 | Phase 1 | Pending |
+| AUTH-04 | Phase 1 | Pending |
+| AUTH-05 | Phase 1 | Pending |
+| AUTH-06 | Phase 1 | Pending |
+| SET-02  | Phase 1 | Pending |
+| VENT-01 | Phase 2 | Pending |
+| VENT-02 | Phase 2 | Pending |
+| VENT-03 | Phase 2 | Pending |
+| VENT-04 | Phase 2 | Pending |
+| VENT-05 | Phase 2 | Pending |
+| ASSESS-01 | Phase 2 | Pending |
+| ASSESS-02 | Phase 2 | Pending |
+| ASSESS-03 | Phase 2 | Pending |
+| GARDEN-01 | Phase 2 | Pending |
+| GARDEN-02 | Phase 2 | Pending |
+| GARDEN-03 | Phase 2 | Pending |
+| GAME-01 | Phase 3 | Pending |
+| GAME-02 | Phase 3 | Pending |
+| GAME-03 | Phase 3 | Pending |
+| GAME-04 | Phase 3 | Pending |
+| STORE-01 | Phase 3 | Pending |
+| STORE-02 | Phase 3 | Pending |
+| STORE-03 | Phase 3 | Pending |
+| INSIGHT-01 | Phase 3 | Pending |
+| INSIGHT-02 | Phase 3 | Pending |
+| SHANTI-01 | Phase 4 | Pending |
+| SHANTI-02 | Phase 4 | Pending |
+| SHANTI-03 | Phase 4 | Pending |
+| SHANTI-04 | Phase 4 | Pending |
+| SAFE-01 | Phase 4 | Pending |
+| SET-01 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 30 total
-- Mapped to phases: 0 (pending roadmap)
-- Unmapped: 30 ⚠️
+- Mapped to phases: 30
+- Unmapped: 0 (coverage complete)
+
+| Phase | Requirements | Count |
+|-------|-------------|-------|
+| Phase 1: Foundation | AUTH-01, AUTH-02, AUTH-03, AUTH-04, AUTH-05, AUTH-06, SET-02 | 7 |
+| Phase 2: Core Experience | VENT-01, VENT-02, VENT-03, VENT-04, VENT-05, ASSESS-01, ASSESS-02, ASSESS-03, GARDEN-01, GARDEN-02, GARDEN-03 | 11 |
+| Phase 3: Engagement & Social | GAME-01, GAME-02, GAME-03, GAME-04, STORE-01, STORE-02, STORE-03, INSIGHT-01, INSIGHT-02 | 9 |
+| Phase 4: Shanti & Hardening | SHANTI-01, SHANTI-02, SHANTI-03, SHANTI-04, SAFE-01, SET-01 | 6 |
 
 ---
 *Requirements defined: 2026-06-13*
-*Last updated: 2026-06-13 after initial definition*
+*Last updated: 2026-06-13 after roadmap creation — traceability complete*

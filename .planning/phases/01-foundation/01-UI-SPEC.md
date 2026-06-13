@@ -24,7 +24,7 @@ created: 2026-06-13
 | Preset | not applicable |
 | Component library | none — hand-rolled CSS utility classes in `src/index.css` |
 | Icon library | lucide-react 1.18.0 |
-| Font | Outfit (display/headings, weights 400/500/600/700) + Inter (body/labels, weights 400/500) — loaded from Google Fonts CDN in `index.html` with `font-display: swap` |
+| Font | Outfit (display/headings, weights 600/700) + Inter (body/labels, weights 400/500) — loaded from Google Fonts CDN in `index.html` with `font-display: swap`: Outfit `wght@600;700`, Inter `wght@400;500` |
 
 Source: DESIGN.md §1, CONTEXT.md D-03, RESEARCH.md Standard Stack.
 
@@ -64,7 +64,7 @@ Two fonts declared. Four size roles. Two weights per font.
 Rules:
 - Outfit is reserved for display and headings only. Do not use Outfit for body copy or input placeholder text.
 - Inter is used for all functional UI copy: labels, captions, error messages, input placeholders.
-- No font size outside the four declared sizes. No font weight outside 400, 500, 600, 700.
+- No font size outside the four declared sizes. Outfit: weights 600, 700 only. Inter: weights 400, 500 only.
 - Minimum rendered font size: 14px (never smaller — accessibility constraint).
 
 Source: DESIGN.md §1 (`--font-display: 'Outfit'`, `--font-body: 'Inter'`).
@@ -79,7 +79,7 @@ All values are CSS custom properties declared in `src/index.css :root`. No hardc
 |------|---------------------|-----------|-------|
 | Dominant (60%) | `--bg-deep` | `hsl(224, 32%, 8%)` | App background, full-bleed page surface, `<body>` background |
 | Secondary (30%) | `--bg-card` | `hsla(224, 30%, 14%, 0.6)` | All glass cards (Auth card, Onboarding card, Dashboard panels, Navbar surface) |
-| Accent — violet (primary, ~7%) | `--accent-violet` | `hsl(263, 90%, 66%)` | Primary CTA buttons, active nav tab indicator, input focus ring, border glow on Signup mode, onboarding "Continue" button |
+| Accent — violet (primary, ~7%) | `--accent-violet` | `hsl(263, 90%, 66%)` | Primary CTA buttons, active nav tab indicator, input focus ring, border glow on Signup mode, onboarding "Continue Setup" button |
 | Accent — teal (success, ~2%) | `--accent-teal` | `hsl(162, 76%, 41%)` | Login mode border shift, onboarding completion checkmark, success states |
 | Accent — rose (warmth, ~1%) | `--accent-rose` | `hsl(342, 75%, 62%)` | Phase 2+ (Insecurity Circle). Out of scope for Phase 1 — do not use. |
 | Accent — orange (energy, <1%) | `--accent-orange` | `hsl(24, 94%, 50%)` | Phase 2+ (Burn Chamber alert). Out of scope for Phase 1 — do not use. |
@@ -161,7 +161,7 @@ Source: DESIGN.md §1 (all raw token values), DESIGN.md §2.1 (border color shif
 - Selected card: `border-color: var(--accent-violet); box-shadow: 0 0 12px var(--border-glow);`
 - Each card has the `breathe` keyframe on its SVG element (scale 1 → 1.08 → 1 over 4s) per DESIGN.md §2.2.
 
-**"Continue" CTA:** `.btn-primary` full-width. Disabled (opacity 0.4, pointer-events none) until required field(s) for current step are filled.
+**"Continue Setup" CTA (Steps 1–3):** `.btn-primary` full-width. Disabled (opacity 0.4, pointer-events none) until required field(s) for current step are filled.
 
 **"Back" link (Steps 2–4):** Positioned top-left of card. Inter 14px weight 400, `color: --text-muted`. On hover: `color: --text-main`. Clickable area padded to 44px height.
 
@@ -285,7 +285,7 @@ All copy is exact. Executor uses these strings verbatim — no rewording.
 | Plant option: Fern | "Fern" |
 | Step 4 headline | "You're all set" |
 | Step 4 body (template) | "Hi [name], your [exam] journey starts now. Your [plant] is waiting." |
-| Primary CTA (Steps 1–3) | "Continue" |
+| Primary CTA (Steps 1–3) | "Continue Setup" |
 | Primary CTA (Step 4) | "Begin Your Journey" |
 | Back link | "Back" |
 | Error — name empty | "Please enter your name." |

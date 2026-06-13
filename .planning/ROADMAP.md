@@ -29,7 +29,13 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. A new user who completes onboarding (name, target exam, exam date, plant seed) is routed to the dashboard with their profile stored
   4. The app loads and is fully navigable without any Firebase or Gemini credentials configured (mock mode)
   5. The glassmorphic design system (HSL tokens, keyframe animations, Outfit/Inter fonts) renders correctly across all screens
-**Plans**: TBD
+**Plans**: 5 plans
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Vite + React 19 project and glassmorphic design system (index.css)
+- [ ] 01-02-PLAN.md — Dual-path service layer: firebase.js mock gate, dbService.js, geminiService.js
+- [ ] 01-03-PLAN.md — Auth.jsx (signup/login/guest) + Onboarding.jsx (4-step Zen Gate)
+- [ ] 01-04-PLAN.md — Navbar.jsx + Dashboard.jsx navigable shell
+- [ ] 01-05-PLAN.md — App.jsx (user, profile) state machine wiring + main.jsx render
 **UI hint**: yes
 
 ### Phase 2: Core Experience
@@ -77,7 +83,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/5 | Planned | - |
 | 2. Core Experience | 0/TBD | Not started | - |
 | 3. Engagement & Social | 0/TBD | Not started | - |
 | 4. Shanti & Hardening | 0/TBD | Not started | - |

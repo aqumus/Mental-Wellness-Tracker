@@ -139,3 +139,17 @@ export async function saveChatHistory(uid, messages) {
   }
   await setDoc(doc(db, 'users', uid), { chatHistory: messages }, { merge: true });
 }
+
+/**
+ * Read the persisted chat history for a user (companion drawer restore).
+ * Mirrors saveChatHistory's storage location in each mode.
+ * @param {string} uid
+ * @returns {Promise<object[]>}
+ */
+export async function getChatHistory(uid) {
+  if (MOCK_MODE) {
+    return lsGet(LS.chatHistory(uid)) || [];
+  }
+  const snap = await getDoc(doc(db, 'users', uid));
+  return snap.exists() ? snap.data().chatHistory || [] : [];
+}

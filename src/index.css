@@ -117,7 +117,7 @@ body {
   }
 }
 
-/* Phase 2 — Rant Room: defined now, applied later */
+/* Rant Room: matrix code collapse on submit */
 @keyframes matrix-fall {
   0% {
     opacity: 1;
@@ -129,6 +129,42 @@ body {
     transform: translateY(100px);
     letter-spacing: 4px;
   }
+}
+
+/* Rant Room: typing spark particles */
+@keyframes spark {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--dx, 0), var(--dy, -24px)) scale(0.2); }
+}
+
+/* Burn Chamber: embers floating up from the lava */
+@keyframes ember {
+  0% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-120px) scale(0.3); }
+}
+
+/* Insecurity Circle: twinkling constellation stars */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+/* Generic surface entrances */
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(24px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Zen Bazaar: redeem coin burst */
+@keyframes coin-pop {
+  0% { opacity: 1; transform: translateY(0) scale(0.6); }
+  60% { opacity: 1; transform: translateY(-30px) scale(1.1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.4); }
 }
 
 /* =============================================================================
@@ -229,7 +265,7 @@ body {
     pointer-events: none;
   }
 
-  /* --- Loading Screen (used by App.jsx stub while state machine initialises) --- */
+  /* --- Loading Screen (used while the state machine initialises) --- */
   .loading-screen {
     display: flex;
     align-items: center;
@@ -237,6 +273,192 @@ body {
     min-height: 100vh;
     width: 100%;
     background: var(--bg-deep);
+  }
+
+  /* --- Text inputs / textareas --- */
+  .input-field {
+    width: 100%;
+    background: hsla(224, 30%, 10%, 0.8);
+    color: var(--text-main);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input-field::placeholder { color: var(--text-muted); }
+  .input-field:focus {
+    outline: none;
+    border-color: var(--accent-violet);
+    box-shadow: 0 0 0 3px var(--border-glow);
+  }
+
+  /* --- Selectable choice card (exams, plants, store, TAT) --- */
+  .choice-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    border-radius: 14px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    color: var(--text-main);
+    transition: border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  }
+  .choice-card:hover { border-color: var(--border-glow); }
+  .choice-card:active { transform: translateY(2px) scale(0.99); }
+  .choice-card[data-selected='true'] {
+    border-color: var(--accent-violet);
+    box-shadow: 0 0 0 2px var(--border-glow), 0 0 24px var(--border-glow);
+  }
+
+  /* --- Navbar tabs --- */
+  .tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--text-main); }
+  .tab-btn[data-active='true'] {
+    color: var(--text-main);
+    background: var(--border-glow);
+  }
+
+  /* --- Stat pill (streak / ZP badges) --- */
+  .stat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: hsla(224, 30%, 10%, 0.7);
+    border: 1px solid var(--border-glass);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+
+  /* --- Modal overlay + card --- */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: hsla(224, 40%, 4%, 0.7);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    animation: fade-in 0.2s ease;
+  }
+  .modal-card {
+    width: 100%;
+    max-width: 460px;
+    background: hsl(224, 32%, 12%);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px;
+    padding: 24px;
+    animation: slide-up 0.25s ease;
+  }
+
+  /* --- Shanti floating action button --- */
+  .chat-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 50;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid var(--border-glow);
+    background: var(--accent-violet);
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 30px hsla(263, 90%, 40%, 0.5);
+    transition: transform 0.15s ease;
+  }
+  .chat-fab:hover { transform: scale(1.06); }
+  .chat-fab:active { transform: scale(0.96); }
+
+  /* --- Shanti drawer --- */
+  .chat-drawer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 55;
+    width: 100%;
+    max-width: 400px;
+    height: min(70vh, 560px);
+    display: flex;
+    flex-direction: column;
+    background: hsl(224, 32%, 11%);
+    border: 1px solid var(--border-glass);
+    border-radius: 18px 18px 0 0;
+    animation: slide-up 0.25s ease;
+  }
+
+  /* --- Chat bubbles --- */
+  .bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .bubble-user {
+    align-self: flex-end;
+    background: var(--accent-violet);
+    color: var(--text-main);
+    border-bottom-right-radius: 4px;
+  }
+  .bubble-ai {
+    align-self: flex-start;
+    background: hsla(224, 30%, 18%, 0.9);
+    color: var(--text-main);
+    border: 1px solid var(--border-glass);
+    border-bottom-left-radius: 4px;
+  }
+
+  /* --- Toast --- */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 70;
+    background: hsl(224, 32%, 16%);
+    border: 1px solid var(--accent-teal);
+    color: var(--text-main);
+    border-radius: 12px;
+    padding: 12px 18px;
+    font-size: 14px;
+    box-shadow: 0 8px 30px hsla(224, 40%, 4%, 0.6);
+    animation: slide-up 0.25s ease;
+  }
+
+  /* --- Spark / ember particles --- */
+  .particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
   }
 
 }

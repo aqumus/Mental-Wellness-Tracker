@@ -36,7 +36,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 5 plansPlans:
 **Wave 1**
 
-- [ ] 01-01-PLAN.md — Scaffold Vite + React 19 project and glassmorphic design system (index.css)
+- [x] 01-01-PLAN.md — Scaffold Vite + React 19 project and glassmorphic design system (index.css)
 - [ ] 01-02-PLAN.md — Dual-path service layer: firebase.js mock gate, dbService.js, geminiService.js
 
 **Wave 2** *(blocked on Wave 1 completion)*
@@ -104,7 +104,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/5 | Planned | - |
+| 1. Foundation | 1/5 | In Progress | - |
 | 2. Core Experience | 0/TBD | Not started | - |
 | 3. Engagement & Social | 0/TBD | Not started | - |
 | 4. Shanti & Hardening | 0/TBD | Not started | - |

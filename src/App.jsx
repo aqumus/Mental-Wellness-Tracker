@@ -21,10 +21,13 @@ import Toast from './components/Toast.jsx';
 
 import { getUser, updateUser, logJournal } from './services/dbService.js';
 import { analyzeJournalEntry } from './services/geminiService.js';
-import { authenticate as authAuthenticate, watchAuth, logout as authLogout } from './services/authService.js';
-import { containsSafetyTrigger } from './lib/session.js';
+import { getSession, setSession, clearSession, makeUid, containsSafetyTrigger } from './lib/session.js';
 import { nextStreak } from './lib/garden.js';
 import { SAFETY_KEYWORDS } from './lib/constants.js';
+
+function uidForEmail(email) {
+  return 'user_' + email.toLowerCase().replace(/[^a-z0-9]/g, '_');
+}
 
 export default function App() {
   const [session, setSessionState] = useState(null);
@@ -37,25 +40,18 @@ export default function App() {
   const [safetyOpen, setSafetyOpen] = useState(false);
   const toastTimer = useRef(null);
 
-  // --- Restore session on load + live auth updates (AUTH criterion 1) -------
-  // Mock mode: fires once with any stored localStorage session.
-  // Live mode: Firebase onAuthStateChanged restores the session on refresh.
+  // --- Restore session on load (refresh persistence, AUTH criterion 1) ------
   useEffect(() => {
-    let first = true;
-    const unsub = watchAuth(async (s) => {
-      setSessionState(s);
-      if (s) {
-        const u = await getUser(s.uid);
-        setProfile(u);
-      } else {
-        setProfile(null);
-      }
-      if (first) {
-        setLoading(false);
-        first = false;
-      }
+    const existing = getSession();
+    if (!existing) {
+      setLoading(false);
+      return;
+    }
+    setSessionState(existing);
+    getUser(existing.uid).then((u) => {
+      setProfile(u);
+      setLoading(false);
     });
-    return unsub;
   }, []);
 
   const pushToast = useCallback((message) => {

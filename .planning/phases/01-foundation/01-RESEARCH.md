@@ -11,8 +11,8 @@
 
 ### Locked Decisions
 - **D-01:** JavaScript with `.jsx` files (not TypeScript)
-- **D-02:** Vite + React scaffold. Dependencies: `lucide-react`, `@google/generative-ai`. No other heavy deps.
-- **D-03:** Plain CSS with HSL custom properties and utility classes in `src/index.css` — no Tailwind. Keyframes defined centrally.
+- **D-02:** Vite + React scaffold. Dependencies: `lucide-react`, `@google/generative-ai`, `tailwindcss` + `@tailwindcss/vite`. No other heavy deps.
+- **D-03:** Tailwind CSS v4 (`@tailwindcss/vite`, CSS-first). HSL design tokens declared in `@theme` within `src/index.css`; semantic component classes via `@layer components`. Keyframes defined centrally. *(Revised 2026-06-13 — supersedes original plain-CSS default.)*
 - **D-04:** Internal state-machine routing in `App.jsx` via conditional rendering — no `react-router-dom`.
 - **D-05:** `firebase.js` detects missing config → mock mode by default.
 - **D-06:** `dbService.js` dual-path: Firestore when live, `localStorage` otherwise. Same method surface: `getUser`, `updateUser`, `logJournal`, `getJournals`, `saveChatHistory`.

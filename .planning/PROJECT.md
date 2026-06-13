@@ -45,7 +45,7 @@ A stressed exam aspirant can vent, check in, and feel genuinely understood — S
 
 ## Constraints
 
-- **Tech stack**: React + Vite, `lucide-react`, `@google/generative-ai` — matches existing implementation plan; no framework churn.
+- **Tech stack**: React + Vite, Tailwind CSS v4, `lucide-react`, `@google/generative-ai` — matches existing implementation plan (Tailwind added per 2026-06-13 styling decision); no further framework churn.
 - **AI provider**: Gemini Flash for Shanti — confirmed; hackathon problem-statement alignment expects it.
 - **Timeline**: Hard hackathon deadline — prioritize a shippable, demoable build over completeness.
 - **Security**: No hardcoded keys — Gemini/Firebase credentials configured via in-app Settings, never committed. Burn Room thoughts destroyed in memory, never persisted. No `dangerouslySetInnerHTML` for AI/chat content (XSS).
@@ -56,6 +56,7 @@ A stressed exam aspirant can vent, check in, and feel genuinely understood — S
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
+| Tailwind CSS v4 for styling | User directive (2026-06-13) — reversed the initial plain-CSS default; DESIGN.md HSL tokens preserved via Tailwind `@theme` | — Pending |
 | Keep Gemini Flash for Shanti | Matches existing specs and hackathon problem-statement alignment | — Pending |
 | Full feature set in v1 | Hackathon scoring rewards the complete differentiated vision | — Pending |
 | Firebase + localStorage dual-path | Works offline for examiners; no backend to maintain | — Pending |

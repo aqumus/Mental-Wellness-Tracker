@@ -28,10 +28,10 @@ The user instructed "use sensible defaults." All decisions below are Claude's di
 
 ### Language & Tooling
 - **D-01:** JavaScript with `.jsx` files (not TypeScript) — matches `IMPLEMENTATION_PLAN.md` file naming (`firebase.js`, `App.jsx`) and keeps hackathon velocity high.
-- **D-02:** Vite + React scaffold. Dependencies: `lucide-react` (icons), `@google/generative-ai` (Gemini, wired in Phase 4 but installed now). No other heavy deps.
+- **D-02:** Vite + React scaffold. Dependencies: `lucide-react` (icons), `@google/generative-ai` (Gemini, wired in Phase 4 but installed now), plus `tailwindcss` + `@tailwindcss/vite` (styling — see D-03). No other heavy deps.
 
 ### Styling system
-- **D-03:** Plain CSS with HSL custom properties (CSS variables) and hand-rolled utility classes centralized in `src/index.css` — per `IMPLEMENTATION_PLAN.md` ("Tailwind-like HSL setup in index.css", "Zero inline styles"). **No Tailwind** — avoids build config overhead and keeps the bundle lean (Efficiency criterion). Keyframes (`breathe`, `incinerate`, matrix-fall) defined centrally.
+- **D-03:** **Tailwind CSS v4** with the `@tailwindcss/vite` plugin. *(Revised 2026-06-13 per user directive — supersedes the original "plain CSS, no Tailwind" default.)* The exact DESIGN.md §1 HSL design tokens are declared via Tailwind v4's `@theme` block in `src/index.css` (single import: `@import "tailwindcss";`), so the locked palette/fonts/blur values are preserved as Tailwind theme tokens. Semantic component classes (`.glass-card`, `.btn-primary`, `.btn-secondary`, etc.) and the keyframe animations (`breathe`, `incinerate`, matrix-fall, `pulse`) are defined centrally in `src/index.css` via `@layer components` / `@utility` with `@apply`, so component JSX keeps using stable class names. Utility classes may be used directly in JSX where convenient. No separate `tailwind.config.js` is required (v4 is CSS-first). Inline `style={{}}` props remain forbidden (IMPLEMENTATION_PLAN.md §1).
 
 ### Routing & state
 - **D-04:** Internal state-machine routing in `App.jsx` via conditional rendering on `(session, profileComplete)` — Auth → Onboarding → Dashboard. **No `react-router-dom`** — `IMPLEMENTATION_PLAN.md` states "App.jsx controls routing states"; in-app tab switching (vents/garden/league/etc.) is also state-driven, so a router adds little. Fewer deps, simpler.

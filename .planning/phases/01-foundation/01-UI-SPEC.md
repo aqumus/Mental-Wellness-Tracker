@@ -22,7 +22,7 @@ created: 2026-06-13
 |----------|-------|
 | Tool | none |
 | Preset | not applicable |
-| Component library | none — hand-rolled CSS utility classes in `src/index.css` |
+| Component library | Tailwind CSS v4 (`@tailwindcss/vite`) — design tokens via `@theme`; semantic component classes (`.glass-card`, `.btn-primary`, …) via `@layer components`/`@utility` in `src/index.css` |
 | Icon library | lucide-react 1.18.0 |
 | Font | Outfit (display/headings, weights 600/700) + Inter (body/labels, weights 400/500) — loaded from Google Fonts CDN in `index.html` with `font-display: swap`: Outfit `wght@600;700`, Inter `wght@400;500` |
 
@@ -73,7 +73,7 @@ Source: DESIGN.md §1 (`--font-display: 'Outfit'`, `--font-body: 'Inter'`).
 
 ## Color
 
-All values are CSS custom properties declared in `src/index.css :root`. No hardcoded hex or HSL literals in component files.
+All values are declared as Tailwind v4 theme tokens in the `@theme` block of `src/index.css` (which also exposes them as CSS custom properties). No hardcoded hex or HSL literals in component files.
 
 | Role | CSS Custom Property | Raw Value | Usage |
 |------|---------------------|-----------|-------|
@@ -340,7 +340,7 @@ No destructive actions exist in Phase 1. No confirmation dialogs needed.
 | shadcn official | none — shadcn not initialized | not applicable |
 | Third-party registries | none | not applicable |
 
-No component registry is in use. All components are hand-rolled in `src/components/`. Icon components are imported from `lucide-react` (approved in RESEARCH.md Package Legitimacy Audit, 83M downloads/week, official Lucide org).
+No component registry (shadcn or third-party) is in use. Components are hand-authored in `src/components/` and styled with Tailwind CSS v4 (utility classes + the semantic component classes defined in `src/index.css`). Icon components are imported from `lucide-react` (approved in RESEARCH.md Package Legitimacy Audit, 83M downloads/week, official Lucide org). Tailwind v4 is CSS-first (no `tailwind.config.js`); it is not a component registry, so the Registry Safety gate remains not applicable.
 
 ---
 
@@ -350,8 +350,8 @@ These constraints flow from CONTEXT.md decisions and must not be overridden by p
 
 | Constraint | Source | Rule |
 |------------|--------|------|
-| No Tailwind | D-03 | All styles in `src/index.css` as CSS custom properties and utility classes. No utility-first class names from any Tailwind-like library. |
-| No inline styles | IMPLEMENTATION_PLAN.md §1 | `style={{}}` props are forbidden. Use `className` with classes from `src/index.css`. |
+| Tailwind CSS v4 | D-03 | Styling uses Tailwind v4 via `@tailwindcss/vite`. Design tokens in the `@theme` block of `src/index.css`; semantic component classes (`.glass-card`, `.btn-primary`, …) via `@layer components`/`@utility` with `@apply`. Single `@import "tailwindcss";`. No `tailwind.config.js` (CSS-first). |
+| No inline styles | IMPLEMENTATION_PLAN.md §1 | `style={{}}` props are forbidden. Use Tailwind utility classes or the `className` component classes from `src/index.css`. |
 | No `dangerouslySetInnerHTML` | IMPLEMENTATION_PLAN.md §1, RESEARCH.md | All dynamic text is React text nodes. |
 | No `react-router-dom` | D-04 | Routing is `(user, profile)` state machine in `App.jsx` conditional render. |
 | No shadcn | D-03 | No `components.json`, no `@radix-ui` imports, no shadcn primitives. |

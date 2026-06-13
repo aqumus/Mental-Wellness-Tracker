@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Phase 1 Plan 1 complete — 01-01 scaffold + design system
-last_updated: "2026-06-13T14:00:00.000Z"
-last_activity: 2026-06-13 -- Completed 01-01 (Vite scaffold + glassmorphic design system)
+stopped_at: Phase 1 Plan 2 complete — 01-02 dual-path service layer
+last_updated: "2026-06-13T14:12:00.000Z"
+last_activity: 2026-06-13 -- Completed 01-02 (firebase.js + dbService.js + geminiService.js)
 progress:
   total_phases: 4
   completed_phases: 0
   total_plans: 5
-  completed_plans: 1
-  percent: 5
+  completed_plans: 2
+  percent: 10
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-06-13)
 ## Current Position
 
 Phase: 1 (Foundation) — EXECUTING
-Plan: 2 of 5 (01-01 complete)
+Plan: 3 of 5 (01-01, 01-02 complete)
 Status: Executing Phase 1
-Last activity: 2026-06-13 -- Completed 01-01 scaffold + design system
+Last activity: 2026-06-13 -- Completed 01-02 dual-path service layer
 
-Progress: [█░░░░░░░░░] 5%
+Progress: [██░░░░░░░░] 10%
 
 ## Performance Metrics
 
@@ -44,11 +44,11 @@ Progress: [█░░░░░░░░░] 5%
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation | 1/5 | 12 min | 12 min |
+| 1. Foundation | 2/5 | 24 min | 12 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01 (12 min)
+- Last 5 plans: 01-01 (12 min), 01-02 (12 min)
 - Trend: on track
 
 *Updated after each plan completion*
@@ -67,6 +67,10 @@ Recent decisions affecting current work:
 - Tailwind v4 CSS-first: @theme in src/index.css, no tailwind.config.js (01-01)
 - All nine pinned npm versions confirmed available and installed successfully (01-01)
 - .env.example documents mock-mode contract — leaving VITE_FIREBASE_* blank = offline mode (01-01)
+- MOCK_MODE = !apiKey || !projectId — two critical fields determine mock vs live (01-02)
+- dbService lsSet never rethrows QuotaExceededError — warns silently, satisfies T-01-04 (01-02)
+- updateUser always uses setDoc merge:true to prevent clobbering streak/zenPoints, satisfies T-01-06 (01-02)
+- geminiService live branch scaffolded as TODO comment — unreachable until Phase 4 wires VITE_GEMINI_API_KEY (01-02)
 
 ### Pending Todos
 
@@ -87,6 +91,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-06-13T14:00:00.000Z
-Stopped at: Completed 01-01-PLAN.md (scaffold + design system)
-Resume file: .planning/phases/01-foundation/01-02-PLAN.md
+Last session: 2026-06-13T14:12:00.000Z
+Stopped at: Completed 01-02-PLAN.md (dual-path service layer)
+Resume file: .planning/phases/01-foundation/01-03-PLAN.md

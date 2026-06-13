@@ -14,7 +14,7 @@ Requirements for the hackathon release. Each maps to a roadmap phase. Derived fr
 - [ ] **AUTH-03**: User can enter as a guest via one-click anonymous session (`signInAnonymously`)
 - [ ] **AUTH-04**: New users complete onboarding: name, target exam (JEE/NEET/UPSC/Boards), exam date, starting plant seed
 - [ ] **AUTH-05**: Completing onboarding creates the user document and routes to the dashboard
-- [ ] **AUTH-06**: App works offline — auth/data fall back to localStorage when Firebase is not configured
+- [x] **AUTH-06**: App works offline — auth/data fall back to localStorage when Firebase is not configured
 
 ### Vent Rooms
 
@@ -65,7 +65,7 @@ Requirements for the hackathon release. Each maps to a roadmap phase. Derived fr
 
 - [ ] **SAFE-01**: Trigger keywords (self-harm / depression indicators) raise a static modal with professional helpline links
 - [ ] **SET-01**: User can configure Gemini API key and Firebase credentials via an in-app Settings panel; keys are never committed to git
-- [ ] **SET-02**: Service layer exposes mock methods so the app runs fully offline for examiners
+- [x] **SET-02**: Service layer exposes mock methods so the app runs fully offline for examiners
 
 ## v2 Requirements
 
@@ -96,8 +96,8 @@ Deferred beyond the hackathon.
 | AUTH-03 | Phase 1 | Pending |
 | AUTH-04 | Phase 1 | Pending |
 | AUTH-05 | Phase 1 | Pending |
-| AUTH-06 | Phase 1 | Pending |
-| SET-02  | Phase 1 | Pending |
+| AUTH-06 | Phase 1 | Complete |
+| SET-02  | Phase 1 | Complete |
 | VENT-01 | Phase 2 | Pending |
 | VENT-02 | Phase 2 | Pending |
 | VENT-03 | Phase 2 | Pending |

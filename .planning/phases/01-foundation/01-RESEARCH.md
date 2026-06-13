@@ -680,22 +680,24 @@ useEffect(() => {
 
 ---
 
-## Open Questions
+## Open Questions (RESOLVED)
+
+All three questions below have adopted recommendations that the Phase 1 plans implement. None block planning or execution.
 
 1. **Anonymous account linking for guest → signup conversion**
    - What we know: Firebase `linkWithCredential` links anonymous → permanent; email enumeration protection (enabled by default on new Firebase projects post-Sept 2023) can block this flow.
    - What's unclear: Whether the target Firebase project has enumeration protection enabled.
-   - Recommendation: Phase 1 does NOT need to implement linking. The guest path leads to onboarding → dashboard. Conversion from guest to permanent account is not in AUTH-01..06. Document as a Phase 4 consideration if desired.
+   - RESOLVED: Phase 1 does NOT implement linking. The guest path leads to onboarding → dashboard; guest→permanent conversion is not in AUTH-01..06. Deferred to Phase 4 as an optional consideration. (Adopted in plans 01-03 / 01-05.)
 
 2. **Google Fonts CDN vs self-hosted Outfit/Inter**
    - What we know: DESIGN.md specifies Outfit/Inter; `index.html` will load from Google Fonts CDN.
    - What's unclear: Whether the hackathon demo environment has reliable internet access for font loading.
-   - Recommendation: Use `@import` in `index.css` pointing to Google Fonts CDN. Add `font-display: swap` and a fallback stack (`sans-serif`) so layout is correct even if fonts fail to load.
+   - RESOLVED: Use `@import` in `index.css` pointing to Google Fonts CDN with `font-display: swap` and a `sans-serif` fallback stack so layout is correct even if fonts fail to load. (Adopted in plan 01-01.)
 
 3. **Mock-mode guest uid persistence across refresh**
    - What we know: In mock mode, guest uid is written to `localStorage`. On reload, App.jsx reads it back.
    - What's unclear: Whether mock-mode guest sessions should persist after browser close (localStorage survives close; sessionStorage does not).
-   - Recommendation: Use `localStorage` for consistency with the live Firebase `browserLocalPersistence` default. Document that examiners can clear localStorage to reset the demo session.
+   - RESOLVED: Use `localStorage` for consistency with the live Firebase `browserLocalPersistence` default. Examiners can clear localStorage to reset the demo session. (Adopted in plans 01-02 / 01-05.)
 
 ---
 
